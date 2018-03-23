@@ -1,0 +1,19 @@
+{
+  "name": "Leeds Student Radio Player",
+  "short_name": "LSR Player",
+  "description": "We are the Sound of Students in Leeds. Listen live.",
+  "lang": "en-GB",
+  "dir": "ltr",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#7E112D",
+  "background_color": "#1a1a1a",
+  "icons": [
+    {
+      "src": "homescreen.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
