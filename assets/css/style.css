@@ -33,6 +33,8 @@ body {
     padding: 0.25em 1em;
     margin-bottom: -2em;
     border-bottom: 4px solid #000000;
+    z-index: 999999;
+    position: relative;
 }
 
 .header #logo-container {
@@ -56,6 +58,5 @@ body {
     margin-top: -56px;
     margin-bottom: -3px;
     margin-left: 76px;
-
 
 }
