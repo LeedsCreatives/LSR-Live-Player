@@ -114,3 +114,8 @@ body {
     background-color: #3a3a3a;
     text-align: center;
 }
+
+.ad .adsbygoogle {
+    position: relative; top: 50%; transform: translateY(25%);
+
+}
