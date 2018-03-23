@@ -1,0 +1,11 @@
+/* Remove annoying defaults */
+* {
+    border-radius: 0 !important;
+    font-family: "Open Sans", sans-serif;
+}
+
+/* Custom Fonts */
+@font-face {
+    font-family: "cubano-sharp";
+    src: url("http://www.thisislsr.com/global/cubano-sharp-webfont.ttf");
+}
