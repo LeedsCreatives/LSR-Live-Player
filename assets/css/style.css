@@ -15,7 +15,7 @@ html, body {
 }
 
 body {
-    background-color: black
+    background-color: #010101;
 }
 /* Main container - surrounds everything */
 .content {
@@ -59,4 +59,35 @@ body {
     margin-bottom: -3px;
     margin-left: 76px;
 
+}
+
+/* Player */
+.player {
+    margin-top: 32px;
+}
+
+.player #cover-art {
+    width: 100%;
+    height: auto;
+    border: 1px solid #010101;
+}
+
+.player .meta {
+    background-color: #1a1a1a;
+    margin-top: -3.4em;
+    position: relative;
+    opacity: 0.9;
+    color: #ececec;
+    padding: 0.2em 0.5em;
+}
+
+.player .meta #show-name {
+    white-space: nowrap;
+    font-weight: 700;
+    overflow: hidden;
+}
+
+.player .meta #show-presenters-container {
+    font-weight: 300;
+    overflow: hidden;
 }
