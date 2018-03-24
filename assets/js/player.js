@@ -1,18 +1,6 @@
 /* Set variables */
 firstLoad = true;
 
-var stream = new Howl({
-    src: ['https://streamer.radio.co/s986435880/listen'],
-    format: 'mp3',
-    html5: true,
-    onload: function() {
-        if(firstLoad) {
-            togglePlayback(false);
-            firstLoad = false;
-        }
-    }
-});
-
 pausedMins = 0;
 pausedSecs = 0;
 
@@ -22,6 +10,54 @@ playButton = document.getElementById("play-button");
 goLiveButton = document.getElementById("go-live");
 
 pauseTimerUpdate = setInterval(updatePausedTimer, 1000);
+
+adFile = "";
+
+/* Preroll ad - need to move to load from pool at some point */
+/* Ads are only played if one hasn't been heard in the last 15 mins */
+if (localStorage.getItem("adHeardAt") === null) { // If ad has been heard before, force ad play
+    playAd = true;
+} else { // If not, lets see if we're due an ad
+    var now = new Date();
+    var lastAdHeardAt = localStorage.getItem("adHeardAt");
+
+    var difference = now - lastAdHeardAt;
+    var fifteenMinutes = 60 * 15 * 1000; // 1000 = milliseconds
+
+    if (difference > fifteenMinutes) { // If ad was heard over 15 mins ago, play ad
+        playAd = true;
+    } else { // otherwise, just play a dry tag to make stuff still works
+        playAd = false
+    }
+}
+
+/* Now get the right file */
+if(playAd) {
+    adFile = "./assets/audio/preroll.mp3";
+} else {
+    adFile = "./assets/audio/drytag.mp3";
+}
+
+/* Now time to actually play it */
+var preroll = new Howl({
+    src: [adFile],
+    format: 'mp3',
+    onload: function() {
+        playButton.disabled = true;
+        playButton.innerHTML = '<i class="fas fa-fw fa-clock"></i>';
+        preroll.play();
+    },
+    onend: function() {
+        togglePlayback(false);
+    }
+});
+
+/* The stream itself */
+var stream = new Howl({
+    src: ['https://streamer.radio.co/s986435880/listen'],
+    format: 'mp3',
+    html5: true
+});
 
 /* Add animation over player */
 var wave = new SiriWave({
@@ -33,6 +69,7 @@ var wave = new SiriWave({
     frequency: 5,
     amplitude: 1
 });
+
 waveDiv = document.getElementById("wave");
 
 
