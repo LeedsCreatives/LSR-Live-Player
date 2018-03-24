@@ -1,12 +1,24 @@
 /* Set variables */
+firstLoad = true;
+
 var stream = new Howl({
     src: ['https://streamer.radio.co/s986435880/listen'],
     format: 'mp3',
-    html5: true
+    html5: true,
+    onload: function() {
+        if(firstLoad) {
+            togglePlayback(false);
+            firstLoad = false;
+        }
+    }
 });
 
 pausedMins = 0;
 pausedSecs = 0;
+
+isReloading = false;
+
+playButton = document.getElementById("play-button");
 
 pauseTimerUpdate = setInterval(updatePausedTimer, 1000);
 
@@ -17,21 +29,30 @@ function togglePlayback(isPlaying) {
         changePlaybackStatus(false);
         togglePausedTimer(true);
     } else {
+        if(isReloading) {
+            playButton.innerHTML = '<i class="fas fa-fw fa-spin fa-spinner"></i>';
+        }
+        isReloading = false;
         stream.play();
         changePlaybackStatus(true);
         togglePausedTimer(false);
     }
+
+    playButton.disabled = true;
+    setTimeout(function() { // Not ideal - this is here to stop people spamming play/pause and breaking it
+        playButton.disabled = false;
+    }, 1000)
 }
 
 function changePlaybackStatus(newStatus) {
     var onClickFunction = "javascript: togglePlayback(" + newStatus + ");";
 
-    document.getElementById("play-button").setAttribute("onclick", onClickFunction);
+    playButton.setAttribute("onclick", onClickFunction);
 
     if(newStatus) {
-        document.getElementById("play-button").innerHTML = '<i class="fas fa-pause"></i>';
+        playButton.innerHTML = '<i class="fas fa-fw fa-pause"></i>';
     } else {
-        document.getElementById("play-button").innerHTML = '<i class="fas fa-play"></i>';
+        playButton.innerHTML = '<i class="fas fa-fw fa-play"></i>';
     }
 }
 
@@ -67,5 +88,6 @@ function updatePausedTimer() {
 /* Return live functionality */
 function goLive() {
     stream.unload();
+    isReloading = true;
     togglePlayback(false);
 }
