@@ -19,13 +19,29 @@ pausedSecs = 0;
 isReloading = false;
 
 playButton = document.getElementById("play-button");
+goLiveButton = document.getElementById("go-live");
 
 pauseTimerUpdate = setInterval(updatePausedTimer, 1000);
+
+/* Add animation over player */
+var wave = new SiriWave({
+    container: document.getElementById('wave'),
+    cover: true,
+    height: 150,
+    speed: 0.02,
+    color: '#650014',
+    frequency: 5,
+    amplitude: 1
+});
+waveDiv = document.getElementById("wave");
+
 
 /* Ran when play/pause button clicked */
 function togglePlayback(isPlaying) {
     if(isPlaying) {
         stream.pause();
+        wave.stop();
+        waveDiv.style.visibility = "hidden";
         changePlaybackStatus(false);
         togglePausedTimer(true);
     } else {
@@ -34,13 +50,18 @@ function togglePlayback(isPlaying) {
         }
         isReloading = false;
         stream.play();
+        wave.start();
+        waveDiv.style.visibility = "visible";
         changePlaybackStatus(true);
         togglePausedTimer(false);
     }
 
     playButton.disabled = true;
+    goLiveButton.disabled = true;
+
     setTimeout(function() { // Not ideal - this is here to stop people spamming play/pause and breaking it
         playButton.disabled = false;
+        goLiveButton.disabled = false;
     }, 1000)
 }
 
