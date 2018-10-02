@@ -1,6 +1,6 @@
 /* Set variables */
 firstLoad = true;
-
+firstPlay = true;
 pausedMins = 0;
 pausedSecs = 0;
 
@@ -43,9 +43,8 @@ var preroll = new Howl({
     src: [adFile],
     format: 'mp3',
     onload: function() {
-        playButton.disabled = true;
-        playButton.innerHTML = '<i class="fas fa-fw fa-clock"></i>';
-        preroll.play();
+        playButton.disabled = false;
+        playButton.innerHTML = '<i class="fas fa-fw fa-play"></i>';
     },
     onend: function() {
         togglePlayback(false);
@@ -76,6 +75,7 @@ waveDiv = document.getElementById("wave");
 /* Ran when play/pause button clicked */
 function togglePlayback(isPlaying) {
     if(isPlaying) {
+		// TODO: Reimplement preroll
         stream.pause();
         wave.stop();
         waveDiv.style.visibility = "hidden";
