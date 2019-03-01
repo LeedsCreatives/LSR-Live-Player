@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="manifest" href="./assets/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="LSR Player">
+    <meta name="apple-mobile-web-app-title" content="LSR Player">
+    <meta name="theme-color" content="#7E112D">
+    <meta name="msapplication-navbutton-color" content="#7E112D">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="homescreen.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="homescreen.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+
+    <!-- Adsense JS -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <title>LSR: Listen Live</title>
+</head>
+<body>
+<div class="container content">
+    <div class="header">
+        <div id="logo-container">
+            <a href="http://thisislsr.com">
+                <img id="logo" src="./assets/img/logo.png" />
+            </a>
+        </div>
+
+        <a href="http://spencer-properties.co.uk/">
+            <img id="sponsor" class="pull-right" src="http://www.thisislsr.com/play/assets/img/sponsor.png" />
+        </a>
+    </div>
+
+    <div class="player">
+        <img id="cover-art" src="./assets/img/default-cover.png" />
+        <div id="wave"></div>
+        <div class="meta">
+            <div id="show-name">Leeds Student Radio</div>
+            <div id="show-presenters-container"> <span id="show-presenters">The Sound of Students in Leeds</span></div>
+            <button type="button" class="btn btn-primary" id="play-button" onclick="togglePlayback(false)"><i class="fas fa-fw fa-spin fa-spinner"></i></button>
+        </div>
+        <div id="paused-data-container"><div id="paused-data">You&apos;ve been paused for <span id="paused-timer">0:00</span> <button class="btn btn-primary pull-right" id="go-live" onclick="goLive()">Go Live</button></div></div>
+    </div>
+
+    <a class="btn btn-primary btn-block" id="switch-players" href="./index.html">Listen to LSR</a>
+
+
+    <div class="ad">
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:320px;height:100px"
+             data-ad-client="ca-pub-6869690988719863"
+             data-ad-slot="3966761173"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+</div>
+<!-- Bootstrap Javascript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- Player Javascript -->
+<script src="https://cdn.jsdelivr.net/npm/siriwavejs@2.0.2/siriwave.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.core.min.js"></script>
+<script src="./assets/js/player-leadluu.js"></script>
+
+</body>
+</html>
