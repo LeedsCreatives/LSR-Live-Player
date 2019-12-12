@@ -53,7 +53,7 @@ var preroll = new Howl({
 
 /* The stream itself */
 var stream = new Howl({
-    src: ['http://s4.free-shoutcast.com:18260/;?type=http&nocache=5'],
+    src: ['https://streaming.radio.co/s12f2f88eb/listen'],
     format: 'mp3',
     html5: true
 });
