@@ -53,7 +53,7 @@ var preroll = new Howl({
 
 /* The stream itself */
 var stream = new Howl({
-    src: ['https://streams.radio.co/sf077a3997/listen'],
+    src: ['https://stream.radio.co/s34fee5d67/listen'],
     format: 'mp3',
     html5: true
 });
